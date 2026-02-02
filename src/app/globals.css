@@ -25,3 +25,25 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+/* scrollbar */
+.custom-sidebar-menu::-webkit-scrollbar {
+  width: 5px; 
+}
+
+.custom-sidebar-menu::-webkit-scrollbar-track {
+  background: transparent; 
+}
+
+.custom-sidebar-menu::-webkit-scrollbar-thumb {
+  background: #bbbdbf; 
+  border-radius: 10px;
+}
+
+.custom-sidebar-menu::-webkit-scrollbar-thumb:hover {
+  background: #858a93; 
+}
+.custom-sidebar-menu {
+  scrollbar-width: thin;
+  scrollbar-color: #d1d5db transparent;
+}
