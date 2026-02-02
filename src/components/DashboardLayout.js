@@ -140,7 +140,7 @@ export default function DashboardLayout({ children }) {
             />
            <DashboardHeader />
           </Header>
-          <div className="mt-14 bg-white p-5">
+          <div className="hidden md:block mt-14 bg-white p-5">
             <DashboardSubHeader />
           </div>
 
