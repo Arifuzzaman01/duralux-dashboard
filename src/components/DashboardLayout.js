@@ -9,6 +9,7 @@ import Link from "next/link";
 import { FiSunrise } from "react-icons/fi";
 import { IoAdd } from "react-icons/io5";
 import DashboardHeader from "./DashboardHeader";
+import DashboardSubHeader from "./DashboardSubHeader";
 
 const { Header, Sider, Content } = Layout;
 
@@ -139,12 +140,15 @@ export default function DashboardLayout({ children }) {
             />
            <DashboardHeader />
           </Header>
+          <div className="mt-14 bg-white p-5">
+            <DashboardSubHeader />
+          </div>
 
           {/* Scrollable Content Area */}
           <Content
             style={{
-              marginTop: 64,
-              margin: isMobile ? "16px" : "24px 4px",
+              marginTop: '64px',
+              margin: isMobile ? "10px" : "24px 16px",
               padding: isMobile ? 16 : 24,
               minHeight: "calc(100vh - 64px)",
               background: colorBgContainer,

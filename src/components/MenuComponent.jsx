@@ -32,7 +32,7 @@ const MenuComponent = ({ mode = "inline", onClick }) => {
           icon: <CgScreenMirror size={22} />,
           label: "Dashboards",
           children: [
-            { key: "crm", label: <Link href="/dashboard/crm">CRM</Link> },
+            { key: "crm", label: <Link href="/">CRM</Link> },
             {
               key: "analytics",
               label: <Link href={"dashboard/analytics"}>Analytics</Link>,
