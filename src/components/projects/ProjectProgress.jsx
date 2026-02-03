@@ -1,74 +1,102 @@
-import React from "react";
-import { Progress, Tooltip, Avatar } from "antd";
-import { LuCircleCheckBig } from "react-icons/lu";
-import { PiUserCircleDuotone } from "react-icons/pi";
-import { MoreOutlined } from "@ant-design/icons";
+// app/page.js
+"use client";
 
-export default function ProjectProgress ({ project }) {
-  // ডামি ডেটা যদি প্রপস না থাকে
-  const { 
-    name = "Spark: Business App", 
-    desc = "Lorem ipsum dolor sit amet...", 
-    progress = 75,
-    teamCount = 12 
-  } = project || {};
+import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 
+const data = [
+  { date: 'JAN/23', blueLine: 44, redLine: 60 },
+  { date: 'FEB/23', blueLine: 12, redLine: 20 },
+  { date: 'MAR/23', blueLine: 76, redLine: 90 },
+  { date: 'APR/23', blueLine: 35, redLine: 45 },
+  { date: 'MAY/23', blueLine: 80, redLine: 100 },
+  { date: 'JUN/23', blueLine: 40, redLine: 55 },
+];
+
+const CustomTooltip = ({ active, payload, label }) => {
+  if (active && payload && payload.length) {
+    return (
+      <div className="bg-white p-3 border border-gray-200 shadow-lg rounded-lg">
+        <p className="font-medium text-gray-800">{label}</p>
+        {payload.map((entry, index) => (
+          <p key={index} className="text-sm" style={{ color: entry.color }}>
+            {entry.dataKey === 'blueLine' ? 'Blue Line' : 'Red Line'}: {entry.value}K
+          </p>
+        ))}
+      </div>
+    );
+  }
+  return null;
+};
+
+export default function ProjectProgress() {
   return (
-    <div className="bg-white p-5 rounded-xl border border-gray-100 shadow-sm hover:shadow-md transition-shadow">
-      {/* Header: Title and Actions */}
-      <div className="flex justify-between items-start mb-4">
-        <div className="flex gap-3">
-          <div className="h-12 w-12 bg-blue-50 text-blue-600 rounded-lg flex items-center justify-center font-bold text-xl">
-            {name[0]}
+    <div className="min-h-screen bg-gray-50 p-4 md:p-8">
+      <div className="max-w-6xl mx-auto">
+        <h1 className="text-2xl font-bold text-gray-800 mb-2">Performance Chart</h1>
+        <p className="text-gray-600 mb-6">Monthly data visualization from Jan to Jun 2023</p>
+        
+        <div className="bg-white rounded-xl shadow-sm p-4 md:p-6">
+          <div className="h-[400px] w-full">
+            <ResponsiveContainer width="100%" height="100%">
+              <LineChart
+                data={data}
+                margin={{ top: 20, right: 30, left: 20, bottom: 20 }}
+              >
+                <CartesianGrid 
+                  strokeDasharray="3 3" 
+                  stroke="#e5e7eb" 
+                  vertical={false}
+                />
+                <XAxis 
+                  dataKey="date" 
+                  axisLine={false}
+                  tickLine={false}
+                  tick={{ fill: '#6b7280', fontSize: 14 }}
+                  padding={{ left: 10, right: 10 }}
+                />
+                <YAxis 
+                  axisLine={false}
+                  tickLine={false}
+                  tick={{ fill: '#6b7280', fontSize: 14 }}
+                  tickFormatter={(value) => `${value}K`}
+                  domain={[0, 110]}
+                />
+                <Tooltip content={<CustomTooltip />} />
+                <Legend 
+                  verticalAlign="top"
+                  align="right"
+                  iconType="circle"
+                  iconSize={10}
+                  wrapperStyle={{ paddingBottom: 20 }}
+                  formatter={(value) => (
+                    <span className="text-gray-700 font-medium text-sm">
+                      {value === 'blueLine' ? 'Blue Line' : 'Red Line'}
+                    </span>
+                  )}
+                />
+                <Line
+                  type="monotone"
+                  dataKey="blueLine"
+                  name="Blue Line"
+                  stroke="#3b82f6"
+                  strokeWidth={3}
+                  dot={{ r: 6, fill: '#3b82f6', strokeWidth: 2, stroke: 'white' }}
+                  activeDot={{ r: 8, fill: '#3b82f6', strokeWidth: 2, stroke: 'white' }}
+                />
+                <Line
+                  type="monotone"
+                  dataKey="redLine"
+                  name="Red Line"
+                  stroke="#ef4444"
+                  strokeWidth={3}
+                  dot={{ r: 6, fill: '#ef4444', strokeWidth: 2, stroke: 'white' }}
+                  activeDot={{ r: 8, fill: '#ef4444', strokeWidth: 2, stroke: 'white' }}
+                />
+              </LineChart>
+            </ResponsiveContainer>
           </div>
-          <div>
-            <h3 className="font-bold text-gray-800 text-base leading-tight">{name}</h3>
-            <p className="text-gray-400 text-xs mt-1 line-clamp-1">{desc}</p>
-          </div>
+         
         </div>
-        <button className="text-gray-400 hover:bg-gray-50 p-1 rounded">
-          <MoreOutlined className="text-xl" />
-        </button>
-      </div>
-
-      {/* Progress Section */}
-      <div className="mb-6">
-        <div className="flex justify-between items-center mb-2">
-          <span className="text-xs font-semibold text-gray-500 uppercase tracking-wider">Progress</span>
-          <span className="text-xs font-bold text-blue-600">{progress}%</span>
-        </div>
-        <Progress 
-          percent={progress} 
-          // আপনার গাইডলাইন অনুযায়ী size ব্যবহার করা হয়েছে
-          size={[null, 8]} 
-          strokeColor="#2563eb"
-          trailColor="#f1f5f9"
-          showInfo={false}
-        />
-      </div>
-
-      {/* Footer: Team and Status Button */}
-      <div className="flex justify-between items-center pt-4 border-t border-gray-50">
-        {/* Team Avatars with Overlap */}
-        <div className="flex items-center pl-3">
-          {[...Array(Math.min(teamCount, 4))].map((_, i) => (
-            <div key={i} className="h-8 w-8 rounded-full border-2 border-white bg-gray-100 -ml-3 flex items-center justify-center overflow-hidden">
-               <PiUserCircleDuotone size={32} className="text-gray-400" />
-            </div>
-          ))}
-          {teamCount > 4 && (
-            <div className="h-8 w-8 rounded-full border-2 border-white bg-blue-50 -ml-3 flex items-center justify-center text-[10px] font-bold text-blue-600">
-              +{teamCount - 4}
-            </div>
-          )}
-        </div>
-
-        {/* Action Button */}
-        <Tooltip title="MARK AS COMPLETE" overlayInnerStyle={{ fontSize: '10px' }}>
-          <button className="p-2 border border-gray-200 rounded-md hover:bg-green-50 hover:text-green-600 hover:border-green-200 transition-all">
-            <LuCircleCheckBig size={18} />
-          </button>
-        </Tooltip>
       </div>
     </div>
   );
