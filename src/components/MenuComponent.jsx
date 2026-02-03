@@ -1,22 +1,42 @@
 "use client";
 
-import React from "react";
+import React, { useMemo } from "react";
 import { Menu } from "antd";
-import { CiAt } from "react-icons/ci";
+import { usePathname } from "next/navigation";
+import Link from "next/link";
+
+// Icons
+import { CiAt, CiSettings } from "react-icons/ci";
 import { CgScreenMirror } from "react-icons/cg";
 import { PiScreencast } from "react-icons/pi";
 import { BsSend } from "react-icons/bs";
 import { IoHelpBuoyOutline, IoBriefcaseOutline } from "react-icons/io5";
-import { FaAt, FaExclamation } from "react-icons/fa6";
+import { FaExclamation } from "react-icons/fa6";
 import { LuDollarSign } from "react-icons/lu";
-import { FiSunrise, FiUsers } from "react-icons/fi";
+import { FiUsers } from "react-icons/fi";
 import { MdOutlineSpaceDashboard } from "react-icons/md";
-import { CiSettings } from "react-icons/ci";
 import { IoIosPower } from "react-icons/io";
 
-import Link from "next/link";
+const MenuComponent = ({ mode = "inline", onClick, collapsed }) => {
+  const pathname = usePathname();
 
-const MenuComponent = ({ mode = "inline", onClick }) => {
+  const { selectedKey, openKey } = useMemo(() => {
+    if (pathname === "/") return { selectedKey: "crm", openKey: "dashboards" };
+
+    const pathParts = pathname.split("/").filter(Boolean);
+    const lastPart = pathParts[pathParts.length - 1];
+
+    let parentKey = "";
+    if (pathname.includes("reports")) parentKey = "reports";
+    else if (pathname.includes("projects")) parentKey = "projects";
+    else if (pathname.includes("Proposal")) parentKey = "proposal";
+    else if (pathname.includes("Customers")) parentKey = "customers";
+    else if (pathname.includes("Leads")) parentKey = "leads";
+    else if (pathname.includes("dashboard") || pathname === "/") parentKey = "dashboards";
+
+    return { selectedKey: lastPart, openKey: parentKey };
+  }, [pathname]);
+
   const menuItems = [
     {
       key: "grp1",
@@ -185,18 +205,18 @@ const MenuComponent = ({ mode = "inline", onClick }) => {
           children: [
             {
               key: "Projects",
-              label: <Link href={"/dashboard/Projects"}>Projects</Link>,
+              label: <Link href={"/projects/list"}>Projects</Link>,
             },
             {
               key: "Projects View",
               label: (
-                <Link href={"/dashboard/Projects-View"}>Projects View</Link>
+                <Link href={"/projects/view"}>Projects View</Link>
               ),
             },
             {
               key: "Projects Create",
               label: (
-                <Link href={"/dashboard/Projects-Create"}>Projects Create</Link>
+                <Link href={"/projects/create"}>Projects Create</Link>
               ),
             },
           ],
@@ -350,18 +370,17 @@ const MenuComponent = ({ mode = "inline", onClick }) => {
   ];
 
   return (
-    <div>
+    <div className="w-full">
       <Menu
         theme="light"
-        mode={mode}
-        defaultSelectedKeys={["analytics"]}
-        defaultOpenKeys={["dashboards"]}
+        mode={collapsed ? "vertical" : "inline"}
+        selectedKeys={[selectedKey]}
+        defaultOpenKeys={[openKey]}
         items={menuItems}
         onClick={onClick}
         style={{ borderRight: 0 }}
-        className="custom-sidebar-menu"
+        className="custom-sidebar-menu font-medium"
       />
-      
     </div>
   );
 };

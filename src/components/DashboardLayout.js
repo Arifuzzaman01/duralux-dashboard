@@ -9,7 +9,6 @@ import Link from "next/link";
 import { FiSunrise } from "react-icons/fi";
 import { IoAdd } from "react-icons/io5";
 import DashboardHeader from "./DashboardHeader";
-import DashboardSubHeader from "./DashboardSubHeader";
 
 const { Header, Sider, Content } = Layout;
 
@@ -17,6 +16,7 @@ export default function DashboardLayout({ children }) {
   const [collapsed, setCollapsed] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
   const [drawerVisible, setDrawerVisible] = useState(false);
+  const [mounted, setMounted] = useState(false);
 
   const {
     token: { colorBgContainer, borderRadiusLG },
@@ -25,10 +25,14 @@ export default function DashboardLayout({ children }) {
   useEffect(() => {
     const handleResize = () => setIsMobile(window.innerWidth < 1024);
     handleResize();
+    setMounted(true);
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
+  if (!mounted) {
+    return <div style={{ background: "#f5f5f5", minHeight: "100vh" }} />;
+  }
   return (
     <ConfigProvider theme={{ token: { colorPrimary: "#1677ff" } }}>
       <Layout style={{ minHeight: "100vh" }}>
@@ -84,7 +88,7 @@ export default function DashboardLayout({ children }) {
               }}
               className="custom-sidebar-menu"
             >
-              <MenuComponent />
+              <MenuComponent collapsed={collapsed} />
               <div className="bg-[#eff0f6] text-black p-5 pl-3 rounded-md flex flex-col items-center justify-center gap-4 m-5">
                 {/* icon */}
                 <FiSunrise size={24} />
@@ -138,21 +142,19 @@ export default function DashboardLayout({ children }) {
               }
               style={{ fontSize: "16px", width: 64, height: 64 }}
             />
-           <DashboardHeader />
+            <DashboardHeader />
           </Header>
-          <div className="hidden md:block mt-14 bg-white p-5">
-            <DashboardSubHeader />
-          </div>
+         
 
           {/* Scrollable Content Area */}
           <Content
             style={{
-              marginTop: '64px',
-              margin: isMobile ? "10px" : "24px 16px",
-              padding: isMobile ? 16 : 24,
+              // marginTop: 20,
+              margin: isMobile ? "10px" : "64px 0px",
+              padding: isMobile ? 10 : 0,
               minHeight: "calc(100vh - 64px)",
-              background: colorBgContainer,
-              borderRadius: borderRadiusLG,
+              // background: colorBgContainer,
+              // borderRadius: borderRadiusLG,
             }}
             className="custom-sidebar-menu "
           >
