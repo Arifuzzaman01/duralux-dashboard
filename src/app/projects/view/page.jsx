@@ -79,11 +79,13 @@ const View = () => {
                   <div className="flex items-center">
                     <div className="flex -space-x-3 overflow-hidden">
                       {[...Array(5)].map((_, i) => (
-                        <PiUserCircleDuotone
-                          key={i}
+                       <Tooltip     key={i} title={"user" + (1+i)}>
+                         <PiUserCircleDuotone
+                      
                           size={36}
                           className="text-gray-400 bg-white rounded-full border-2 border-white"
                         />
+                       </Tooltip>
                       ))}
                     </div>
                     <p className="text-xs text-gray-400 font-medium ml-3">
