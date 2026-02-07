@@ -1,11 +1,10 @@
 "use client";
-import { AutoComplete, Button, Tooltip } from "antd";
 import React, { useState } from "react";
+import { Button, Tooltip } from "antd";
 import {
   MoreOutlined,
   PlusOutlined,
   ShareAltOutlined,
-  UserAddOutlined,
 } from "@ant-design/icons";
 import { PiUserCircleDuotone } from "react-icons/pi";
 import { LuCircleCheckBig } from "react-icons/lu";
@@ -15,158 +14,117 @@ import ProjectProgress from "@/components/projects/ProjectProgress";
 
 const View = () => {
   const [activeBtn, setActiveBtn] = useState("overview");
+
   return (
-    <div>
-      <div className="flex justify-between items-center  bg-white p-3">
-        <div className="flex items-center gap-2">
+    <div className="min-h-screen bg-gray-50 ">
+      {/* Header Section */}
+      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center bg-white p-4 gap-4 ">
+        <div>
           <h2 className="text-xl font-bold text-gray-800">Projects</h2>
-          <p className="text-gray-400 text-sm mt-1">Home &gt; List</p>
+          <p className="text-gray-400 text-xs mt-1">Home &gt; Project Details</p>
         </div>
-        <div className="space-x-3">
-          <Button
-            // type="outline"
-            icon={<MoreOutlined />}
-            className="h-20 !p-5 !bg-white"
-          ></Button>
-          <Button
-            type="primary"
-            icon={<PlusOutlined />}
-            className="h-20 !p-5 !bg-blue-700"
-          >
-            CREATE PROJECT
+        <div className="flex items-center gap-2 w-full sm:w-auto">
+          <Button icon={<MoreOutlined />} className="flex-1 sm:flex-none h-10" />
+          <Button type="primary" icon={<PlusOutlined />} className="flex-[2] sm:flex-none h-10 bg-blue-600">
+            <span className="hidden md:inline ml-1">CREATE PROJECT</span>
           </Button>
-          <Button
-            type="primary"
-            icon={<ShareAltOutlined />}
-            className="h-20 !p-5 !bg-blue-700"
-          >
-            Share
+          <Button type="primary" icon={<ShareAltOutlined />} className="flex-1 sm:flex-none h-10 bg-blue-600">
+            <span className="hidden md:inline ml-1">Share</span>
           </Button>
         </div>
       </div>
-      <div className="bg-white pt-2 mb-5">
-        <button
-          onClick={() => setActiveBtn("overview")}
-          className={`${activeBtn === "overview" ? "border-b-4 border-blue-700 bg-blue-100" : "bg-white"} px-5 py-4  transition-all duration-300 ease-in-out`}
-        >
-          Overview
-        </button>
-        <button
-          onClick={() => setActiveBtn("activity")}
-          className={`${activeBtn === "activity" ? "border-b-4 border-blue-700 bg-blue-100" : "bg-white"} px-5 py-4  transition-all duration-300 ease-in-out`}
-        >
-          Activity
-        </button>
-        <button
-          onClick={() => setActiveBtn("timeSheets")}
-          className={`${activeBtn === "timeSheets" ? "border-b-4 border-blue-700 bg-blue-100" : "bg-white"} px-5 py-4  transition-all duration-300 ease-in-out`}
-        >
-          TimeSheets
-        </button>
-        <button
-          onClick={() => setActiveBtn("mileStone")}
-          className={`${activeBtn === "mileStone" ? "border-b-4 border-blue-700 bg-blue-100" : "bg-white"} px-5 py-4  transition-all duration-300 ease-in-out`}
-        >
-          MileStone
-        </button>
-        <button
-          onClick={() => setActiveBtn("discussions")}
-          className={`${activeBtn === "discussions" ? "border-b-4 border-blue-700 bg-blue-100" : "bg-white"} px-5 py-4  transition-all duration-300 ease-in-out`}
-        >
-          Discussions
-        </button>
+
+      {/* Navigation Tabs */}
+      <div className="bg-white flex overflow-x-auto  sticky top-0 z-10 no-scrollbar">
+        {["overview", "activity", "timeSheets", "mileStone", "discussions"].map((tab) => (
+          <button
+            key={tab}
+            onClick={() => setActiveBtn(tab)}
+            className={`${
+              activeBtn === tab 
+              ? "border-b-2 border-blue-600 text-blue-600 bg-blue-50/50" 
+              : "text-gray-500 hover:text-blue-600"
+            } px-6 py-4 text-sm font-medium transition-all whitespace-nowrap capitalize`}
+          >
+            {tab}
+          </button>
+        ))}
       </div>
+
+      {/* Content Section */}
       {activeBtn === "overview" && (
-        <div className="mx-5 bg-white p-6 rounded-xl">
-          <div className="flex flex-col md:flex-row justify-between items-center gap-5">
-            <div className="  space-y-6">
-              <h2 className="text-xl font-semibold text-gray-700">
-                Duralux || CRM Applications & Admin Dashboar{" "}
-                <span className="text-xs p-1 bg-blue-100  rounded-sm text-blue-500 mx-3">
-                  In Prograss
-                </span>
-              </h2>
-              <div className="flex items-center gap-3">
-                <button className="py-2 px-3 border border-gray-300 rounded-sm text-gray-400 text-xs">
-                  CRM Dashboard
-                </button>
-                <p className="text-gray-500 w-[1.5px] h-7 bg-gray-300"></p>
-                <div className="flex items-center pl-4">
-                  {[...Array(15)].slice(0, 5).map((_, i) => (
-                    <Tooltip key={i} placement="top" title={`User ${i + 1}`}>
-                      <PiUserCircleDuotone
-                        size={38}
-                        className="text-gray-700 -ml-4 bg-white rounded-full border-2 border-white"
-                      />
-                    </Tooltip>
-                  ))}
-                  {15 > 5 && (
-                    <Tooltip title={`${15 - 5} more users`}>
-                      <div className="h-[30px] w-[30px] -ml-4 rounded-full bg-blue-100  border-2 border-white flex items-center justify-center text-xl text-blue-600 font-bold cursor-pointer hover:bg-blue-100 transition-colors">
-                        <MoreOutlined />
-                      </div>
-                    </Tooltip>
-                  )}
-                  <p className="text-sm text-gray-400 mx-3">
-                    {" "}
-                    {15 - 5} + Members
-                  </p>
+        <div className=" md:p-6 ">
+          <div className="bg-white py-5 px-2 md:p-8 rounded-xl shadow-sm border border-gray-100">
+            
+            {/* Project Title and Actions Row */}
+            <div className="flex flex-col md:flex-row justify-between items-start lg:items-center gap-6">
+              
+              <div className="space-y-4 w-full lg:max-w-2xl">
+                <div className="flex flex-wrap items-center gap-3">
+                  <h2 className="text-lg md:text-2xl font-bold text-gray-800 leading-tight">
+                    Duralux || CRM Applications & Admin Dashboard
+                  </h2>
+                  <span className="px-2.5 py-1 bg-blue-100 text-blue-600 text-[11px] font-bold rounded-md uppercase">
+                    In Progress
+                  </span>
+                </div>
+
+                <div className="flex flex-wrap items-center gap-4">
+                  <button className="py-1.5 px-3 border border-gray-200 rounded text-gray-500 text-xs hover:bg-gray-50 transition-colors">
+                    CRM Dashboard
+                  </button>
+                  <div className="hidden sm:block h-6 w-[1px] bg-gray-200"></div>
+                  
+                  {/* Avatar Group */}
+                  <div className="flex items-center">
+                    <div className="flex -space-x-3 overflow-hidden">
+                      {[...Array(5)].map((_, i) => (
+                        <PiUserCircleDuotone
+                          key={i}
+                          size={36}
+                          className="text-gray-400 bg-white rounded-full border-2 border-white"
+                        />
+                      ))}
+                    </div>
+                    <p className="text-xs text-gray-400 font-medium ml-3">
+                      +10 Members
+                    </p>
+                  </div>
                 </div>
               </div>
-            </div>
-            <div className="flex items-center gap-2">
-              <Tooltip
-                title={
-                  <span className="text-[10px] text-gray-200">
-                    MAKE AS COMPLETE
-                  </span>
-                }
-              >
-                <button className="p-2.5 border border-gray-300 rounded-sm">
-                  {" "}
-                  <LuCircleCheckBig size={20} />{" "}
-                </button>
-              </Tooltip>
-              <Tooltip
-                title={
-                  <span className="text-[10px] text-gray-200">TIMESHEETS</span>
-                }
-              >
-                <button className="p-2.5 border border-gray-300 rounded-sm">
-                  {" "}
-                  <CiViewTimeline size={20} />{" "}
-                </button>
-              </Tooltip>
-              <Tooltip
-                title={
-                  <span className="text-[10px] text-gray-200">STATISTICS</span>
-                }
-              >
-                <button className="p-2.5 border border-gray-300 rounded-sm">
-                  {" "}
-                  <IoMdStats size={20} />{" "}
-                </button>
-              </Tooltip>
 
-              <Tooltip
-                title={
-                  <span className="text-xs text-gray-200">TIMESHEETS</span>
-                }
-              >
-                <button className="p-2.5 border border-gray-200 rounded-sm flex items-center gap-2 bg-green-500 text-white">
+              {/* Action Buttons Group */}
+              <div className="flex flex-wrap  items-center gap-2 w-full lg:w-auto">
+                <div className="flex gap-2 w-full sm:w-auto">
+                  <ActionButton icon={<LuCircleCheckBig />} tooltip="MARK AS COMPLETE" />
+                  <ActionButton icon={<CiViewTimeline />} tooltip="TIMESHEETS" />
+                  <ActionButton icon={<IoMdStats />} tooltip="STATISTICS" />
+                </div>
+                <button className="w-full sm:w-auto px-5 py-2.5 bg-green-500 hover:bg-green-600 text-white rounded flex items-center justify-center gap-2 text-sm font-semibold transition-all">
                   <IoMdTime size={18} /> Start Timer
                 </button>
-              </Tooltip>
-            </div>
-          </div>
-              <div>
-                <ProjectProgress />
               </div>
+            </div>
 
+            {/* Progress Component Section */}
+            <div className="mt-10 pt-8 border-t border-gray-50">
+              <ProjectProgress />
+            </div>
+
+          </div>
         </div>
       )}
     </div>
   );
 };
+
+// Helper component for icon buttons
+const ActionButton = ({ icon, tooltip }) => (
+  <Tooltip title={<span className="text-[10px] uppercase">{tooltip}</span>}>
+    <button className="flex-1 sm:flex-none p-2.5 border border-gray-200 rounded text-gray-600 hover:bg-blue-50 hover:border-blue-200 hover:text-blue-600 transition-all">
+      {React.cloneElement(icon, { size: 20 })}
+    </button>
+  </Tooltip>
+);
 
 export default View;

@@ -30,17 +30,17 @@ const CustomTooltip = ({ active, payload, label }) => {
 
 export default function ProjectProgress() {
   return (
-    <div className="min-h-screen bg-gray-50 p-4 md:p-8">
+    <div className="min-h-screen bg-gray-50 ">
       <div className="max-w-6xl mx-auto">
         <h1 className="text-2xl font-bold text-gray-800 mb-2">Performance Chart</h1>
         <p className="text-gray-600 mb-6">Monthly data visualization from Jan to Jun 2023</p>
         
-        <div className="bg-white rounded-xl shadow-sm p-4 md:p-6">
+        <div className="bg-white rounded-xl shadow-sm ">
           <div className="h-[400px] w-full">
             <ResponsiveContainer width="100%" height="100%">
               <LineChart
                 data={data}
-                margin={{ top: 20, right: 30, left: 20, bottom: 20 }}
+                margin={{ top: 20, right: 10, left: 10, bottom: 20 }}
               >
                 <CartesianGrid 
                   strokeDasharray="3 3" 

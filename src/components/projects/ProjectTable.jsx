@@ -2,9 +2,13 @@
 import React, { useState } from "react";
 import { Table, Tag, Avatar, Space, Button, Select } from "antd";
 import { EyeOutlined, MoreOutlined } from "@ant-design/icons";
+import { useSearchParams } from "next/navigation";
 
 export default function ProjectTable({ data }) {
   const [selectedRowKeys, setSelectedRowKeys] = useState([]);
+  const searchParams = useSearchParams()
+  const limit = searchParams.get("limit")
+  console.log(limit);
 
   const onSelectChange = (newSelectedRowKeys) => {
     setSelectedRowKeys(newSelectedRowKeys);
@@ -97,7 +101,7 @@ export default function ProjectTable({ data }) {
 
   return (
     <Table
-      className="bg-white"
+      className="bg-white "
       rowSelection={rowSelection}
       columns={columns}
       dataSource={data}
@@ -108,7 +112,7 @@ export default function ProjectTable({ data }) {
         "hover:bg-blue-50/30 transition-colors cursor-pointer"
       }
       pagination={{
-        pageSize: 10,
+        pageSize: limit,
         //   showSizeChanger: true,
         placement: ["bottomRight"],
         className: "p-4 !m-0 border-t border-gray-50",

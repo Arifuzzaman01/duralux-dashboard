@@ -150,7 +150,7 @@ export default function DashboardLayout({ children }) {
           <Content
             style={{
               // marginTop: 20,
-              margin: isMobile ? "10px" : "64px 0px",
+              margin: "64px 0px",
               padding: isMobile ? 10 : 0,
               minHeight: "calc(100vh - 64px)",
               // background: colorBgContainer,
