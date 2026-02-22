@@ -55,7 +55,7 @@ const MenuComponent = ({ mode = "inline", onClick, collapsed }) => {
             { key: "crm", label: <Link href="/">CRM</Link> },
             {
               key: "analytics",
-              label: <Link href={"dashboard/analytics"}>Analytics</Link>,
+              label: <Link href={"/dashboard/analytics"}>Analytics</Link>,
             },
           ],
         },

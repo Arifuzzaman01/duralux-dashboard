@@ -1,10 +1,14 @@
-import SalesGoalChart from '@/components/e-dashboard/SalesGoalChart'
-import React from 'react'
+import InventorySection from "@/components/e-dashboard/InventorySection";
+import MainKPIs from "@/components/e-dashboard/MainKPIs";
+import SalesGoalChart from "@/components/e-dashboard/SalesGoalChart";
+import React from "react";
 
-const dashboard = () => {
+export default function Dashboard() {
   return (
-    <div>< SalesGoalChart/></div>
-  )
+    <div>
+      <MainKPIs />
+      <SalesGoalChart />
+      <InventorySection />
+    </div>
+  );
 }
-
-export default dashboard

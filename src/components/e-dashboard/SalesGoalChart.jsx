@@ -8,8 +8,8 @@ const CircularProgress = () => {
   return (
     <div className="p-3 md:flex items-end gap-5 ">
       <div className="w-full md:w-80 h-80  bg-gray-50  rounded-md shadow-sm mb-5 md:mb-0">
-        <h1 className="px-2 py-5 text-2xl text-gray-700 font-semibold text-center">Overall Performance</h1>
-        <div className="relative w-full h-60 flex items-center justify-center overflow-hidden">
+        <h1 className="px-2  py-5 text-2xl text-gray-700 font-semibold text-center">Overall Performance</h1>
+        <div className="relative w-full  h-52 flex items-center justify-center overflow-hidden">
           {bars.map((_, i) => {
             const isHighlighted = i < performance / 10;
 
