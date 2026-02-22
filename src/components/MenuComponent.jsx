@@ -14,7 +14,7 @@ import { IoHelpBuoyOutline, IoBriefcaseOutline } from "react-icons/io5";
 import { FaExclamation } from "react-icons/fa6";
 import { LuDollarSign } from "react-icons/lu";
 import { FiUsers } from "react-icons/fi";
-import { MdOutlineSpaceDashboard } from "react-icons/md";
+import { MdOutlineSpaceDashboard, MdSpaceDashboard } from "react-icons/md";
 import { IoIosPower } from "react-icons/io";
 
 const MenuComponent = ({ mode = "inline", onClick, collapsed }) => {
@@ -57,6 +57,15 @@ const MenuComponent = ({ mode = "inline", onClick, collapsed }) => {
               key: "analytics",
               label: <Link href={"dashboard/analytics"}>Analytics</Link>,
             },
+          ],
+        },
+        {
+          key: "e-dashboards",
+          icon: <MdSpaceDashboard size={22} />,
+          label: "E-Dashboards",
+          children: [
+            { key: "dashboardHome", label: <Link href="/dashboard">Dashboard</Link> },
+          
           ],
         },
         {

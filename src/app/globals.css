@@ -47,3 +47,13 @@ body {
   scrollbar-width: thin;
   scrollbar-color: #d1d5db transparent;
 }
+.custom-shape {
+  width: 20px; /* টপ উইডথ অনুযায়ী মূল উইডথ */
+  height: 50px;
+  background-color: #10b981; /* আপনার ড্যাশবোর্ডের থিম অনুযায়ী সবুজ রঙ */
+  margin: 20px auto;
+  
+  /* clip-path দিয়ে বটম উইডথ ১৫px করা হচ্ছে */
+  /* ক্যালকুলেশন: (২০-১৫)/২ = ২.৫px দুই পাশ থেকে বাদ যাবে */
+  clip-path: polygon(0% 0%, 100% 0%, 87.5% 100%, 40.5% 100%);
+}
