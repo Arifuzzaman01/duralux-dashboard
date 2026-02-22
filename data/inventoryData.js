@@ -4,7 +4,7 @@ export const inventoryData = {
     { name: 'Smart Watch', sales: 3000, stock: 1398, amt: 2210 },
     { name: 'Mechanical KB', sales: 2000, stock: 9800, amt: 2290 },
     { name: 'Gaming Mouse', sales: 2780, stock: 3908, amt: 2000 },
-    { name: 'Gaming Mouses', sales: 2770, stock: 3908, amt: 2100 },
+    { name: 'Gaming Mouses', sales: 2770, stock: 3908, amt: 2500 },
   ],
   lowSelling: [
     { name: 'Old Case', sales: 120, stock: 50, amt: 100 },

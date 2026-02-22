@@ -1,6 +1,5 @@
 import KPISection from "./KPISection";
 
-
 async function getKPIData() {
   return {
     totalSales: 250000,
@@ -18,7 +17,6 @@ export default async function MainKPIs() {
     <main className="p-3 bg-gray-50 ">
       <h1 className="text-2xl font-semibold mb-6">Ecommerce Overview</h1>
       <KPISection data={data} />
-      
     </main>
   );
 }

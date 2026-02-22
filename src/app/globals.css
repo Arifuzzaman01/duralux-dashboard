@@ -17,7 +17,6 @@
     --background: #fff;
     --foreground: #333;
   }
-  
 }
 
 body {
@@ -28,32 +27,31 @@ body {
 
 /* scrollbar */
 .custom-sidebar-menu::-webkit-scrollbar {
-  width: 5px; 
+  width: 5px;
 }
 
 .custom-sidebar-menu::-webkit-scrollbar-track {
-  background: transparent; 
+  background: transparent;
 }
 
 .custom-sidebar-menu::-webkit-scrollbar-thumb {
-  background: #bbbdbf; 
+  background: #bbbdbf;
   border-radius: 10px;
 }
 
 .custom-sidebar-menu::-webkit-scrollbar-thumb:hover {
-  background: #858a93; 
+  background: #858a93;
 }
 .custom-sidebar-menu {
   scrollbar-width: thin;
   scrollbar-color: #d1d5db transparent;
 }
-.custom-shape {
-  width: 20px; /* টপ উইডথ অনুযায়ী মূল উইডথ */
+/* .custom-shape {
+  width: 20px; 
   height: 50px;
-  background-color: #10b981; /* আপনার ড্যাশবোর্ডের থিম অনুযায়ী সবুজ রঙ */
+  background-color: #10b981; 
   margin: 20px auto;
-  
-  /* clip-path দিয়ে বটম উইডথ ১৫px করা হচ্ছে */
-  /* ক্যালকুলেশন: (২০-১৫)/২ = ২.৫px দুই পাশ থেকে বাদ যাবে */
+
+ 
   clip-path: polygon(0% 0%, 100% 0%, 87.5% 100%, 40.5% 100%);
-}
+} */
