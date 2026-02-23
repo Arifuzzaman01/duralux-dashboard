@@ -7,67 +7,72 @@ const RegionalAnalytics = () => {
   const [hoveredId, setHoveredId] = useState(null);
 
   return (
-    <div className="flex flex-col items-center bg-white p-6 rounded-[2rem] shadow-sm border border-gray-100">
-      <div className="mb-6 text-center">
-        <h3 className="text-xl font-bold text-gray-800">Regional Performance Map</h3>
-        <p className="text-xs text-gray-400">Hover over divisions to see insights</p>
+    <div className="w-full max-w-[500px] mx-auto bg-white p-4 rounded-lg shadow-sm border border-gray-100 ">
+      {/* Header Section */}
+      <div className="mb-4 text-center px-2">
+        <h3 className="text-lg md:text-xl font-bold text-gray-800">
+          Regional Performance Map
+        </h3>
+        <p className="text-[10px] md:text-xs text-gray-400">
+          Tap or hover on divisions for details
+        </p>
       </div>
 
-      <div className="relative w-[400px] h-[500px] bg-slate-50 rounded-2xl overflow-hidden border border-slate-100">
+      {/* ম্যাপ কন্টেইনার - ফিক্সড ৬০০ পিক্সেল */}
+      <div className="relative w-full h-[350px] bg-slate-50 rounded-2xl overflow-hidden border border-slate-200 touch-none">
         <svg
-          viewBox="0 0 400 1500" // ভিউবক্স ৫০০ এর বেশি না রাখাই ভালো যদি কন্টেইনার ৫০০ হয়
-          className="w-full h-full p-4"
+          viewBox="0 20 800 1000"
+          className="w-full h-full"
           xmlns="http://www.w3.org/2000/svg"
+          preserveAspectRatio="xMidYMid meet"
         >
           {bdRegionalData.map((region) => {
-            // হাইলাইট লজিক: ধরুন ৫ লাখের বেশি সেলস হলে বিশেষ হাইলাইট
             const isHighSales = region.sales > 500000;
 
             return (
               <Tooltip
                 key={region.id}
+                trigger={["hover", "click"]}
                 color="#001529"
                 title={
-                  <div className="p-1">
-                    <p className="font-bold mb-1">{region.name}</p>
-                    <p className="text-[11px]">Users: {region.users.toLocaleString()}</p>
-                    <p className="text-[11px]">Sales: ${region.sales.toLocaleString()}</p>
-                    <p className="text-[11px] text-red-400">Reject Rate: {region.rejectRate}</p>
+                  <div className="p-1 text-[10px] md:text-[11px]">
+                    <p className="font-bold border-b border-gray-600 mb-1">
+                      {region.name}
+                    </p>
+                    <p>Users: {region?.users?.toLocaleString()}</p>
+                    <p>Sales: ${region?.sales?.toLocaleString()}</p>
+                    <p>Active Order: ${region?.activeOrders?.toLocaleString()}</p>
+                    <p>Reject Rate: ${region?.rejectRate?.toLocaleString()}</p>
                   </div>
                 }
               >
                 <g
-                  className="cursor-pointer transition-all duration-300"
-                  // গ্রুপকে তার নির্দিষ্ট পজিশনে সরানো (posX, posY আপনার ডাটায় থাকতে হবে)
+                  className="cursor-pointer"
                   transform={`translate(${region.posX || 0}, ${region.posY || 0})`}
                   onMouseEnter={() => setHoveredId(region.id)}
                   onMouseLeave={() => setHoveredId(null)}
                 >
-                  {/* বিভাগীয় শেপ */}
                   <path
                     d={region?.pathData}
                     fill={region.color}
-                    // হাইলাইট কোড: গোল্ডেন বর্ডার যদি সেলস বেশি হয়
                     stroke={isHighSales ? "#fbbf24" : "#ffffff"}
-                    strokeWidth={hoveredId === region.id || isHighSales ? 2 : 1}
-                    className={`transition-all duration-300 ${
-                      hoveredId === region.id ? "brightness-110" : ""
-                    } ${isHighSales ? "drop-shadow-md" : ""}`}
+                    strokeWidth={hoveredId === region.id ? 2 : 1}
+                    className="transition-all duration-300"
                     style={{
-                      transform: hoveredId === region.id ? "scale(1.01)" : "scale(1)",
+                      transform:
+                        hoveredId === region.id ? "scale(1.005)" : "scale(1)",
                       transformOrigin: "center",
                     }}
                   />
 
-                  {/* বিভাগের নাম - পাথের সাপেক্ষে পজিশন (labelX, labelY) */}
                   <text
                     x={region.labelX}
                     y={region.labelY}
                     textAnchor="middle"
-                    className="select-none pointer-events-none fill-white font-bold"
+                    className="pointer-events-none fill-white font-bold select-none"
                     style={{
-                      fontSize: "10px",
-                      textShadow: "0px 1px 3px rgba(0,0,0,0.8)",
+                      fontSize: "35px",
+                      textShadow: "2px 2px 4px rgba(0,0,0,0.9)",
                     }}
                   >
                     {region.name}
@@ -77,18 +82,6 @@ const RegionalAnalytics = () => {
             );
           })}
         </svg>
-
-        {/* লেজেন্ড */}
-        <div className="absolute bottom-4 right-4 bg-white/80 backdrop-blur-sm p-2 rounded-lg border border-gray-100">
-          <div className="flex items-center gap-2 mb-1">
-            <div className="w-3 h-3 bg-blue-900 border border-yellow-400 rounded-sm"></div>
-            <span className="text-[10px] text-gray-600 font-bold">High Sales Area</span>
-          </div>
-          <div className="flex items-center gap-2">
-            <div className="w-3 h-3 bg-blue-200 rounded-sm"></div>
-            <span className="text-[10px] text-gray-600">Emerging Area</span>
-          </div>
-        </div>
       </div>
     </div>
   );

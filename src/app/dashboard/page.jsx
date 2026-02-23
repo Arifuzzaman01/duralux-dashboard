@@ -11,7 +11,7 @@ export default function Dashboard() {
       <MainKPIs />
       <SalesGoalChart />
       <InventorySection />
-      <div className="mx-4 my-5">
+      <div className="mx-4 my-5 flex flex-col md:flex-row gap-5 items-end">
         <PromotionalSalesChart />
         <RegionalAnalytics />
       </div>
