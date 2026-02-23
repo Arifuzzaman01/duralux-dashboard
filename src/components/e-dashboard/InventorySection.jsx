@@ -42,7 +42,7 @@ const InventorySection = () => {
   ];
 
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-12 gap-5 mt-8 px-3">
+    <div className="grid grid-cols-1 lg:grid-cols-12 gap-5 mt-3 px-3">
       {/* LEFT SECTION: Sales Analytics */}
       <Card
         className="lg:col-span-7 shadow-sm border-none"
