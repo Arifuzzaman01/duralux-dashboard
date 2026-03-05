@@ -70,10 +70,10 @@ export default function PromotionalSalesChart() {
   const [activeIndex, setActiveIndex] = useState(0);
 
   return (
-    <div className="w-full max-w-md bg-white p-3  rounded-lg shadow-sm border border-gray-50 pb-12">
+    <div className="w-full lg:max-w-md bg-white p-3  rounded-lg shadow-sm border border-gray-50 pb-12 mt-4 ">
       <ChartHeader />
 
-      <div className="h-[250px] w-full relative ">
+      <div className="h-[270px] w-full relative ">
         <ResponsiveContainer width="100%" height="100%">
           <PieChart>
             <Pie

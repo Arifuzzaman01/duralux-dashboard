@@ -1,0 +1,202 @@
+[
+  {
+    "id": 1,
+    "name": "Spark: Business App",
+    "desc": "Lorem ipsum dolor sit amet...",
+    "customer": "Alexandri Ltd",
+    "start": "2023-04-05",
+    "end": "2023-04-10",
+    "assigned": "arcie.tones@gmail.com",
+    "status": "In Progress"
+  },
+  {
+    "id": 2,
+    "name": "Nexus: CRM System",
+    "desc": "Consectetur adipiscing elit...",
+    "customer": "Green Solutions",
+    "start": "2023-05-12",
+    "end": "2023-06-20",
+    "assigned": "jon.tones@gmail.com",
+    "status": "Not Started"
+  },
+  {
+    "id": 3,
+    "name": "Velocity: E-commerce",
+    "desc": "Sed do eiusmod tempor...",
+    "customer": "Nancy Store",
+    "start": "2023-04-01",
+    "end": "2023-05-10",
+    "assigned": "lanie.nveyn@gmail.com",
+    "status": "On Hold"
+  },
+  {
+    "id": 4,
+    "name": "Catalyst: HR Portal",
+    "desc": "Ut enim ad minim veniam...",
+    "customer": "Henry Group",
+    "start": "2023-01-15",
+    "end": "2023-02-10",
+    "assigned": "nnoth.uno@gmail.com",
+    "status": "Declined"
+  },
+  {
+    "id": 5,
+    "name": "Aether: Marketing Tools",
+    "desc": "Quis nostrud exercitation...",
+    "customer": "Sarah Media",
+    "start": "2023-07-01",
+    "end": "2023-08-15",
+    "assigned": "sarah.m@gmail.com",
+    "status": "In Progress"
+  },
+  {
+    "id": 6,
+    "name": "Orion: Analytics Dashboard",
+    "desc": "Duis aute irure dolor...",
+    "customer": "Mike Corp",
+    "start": "2023-03-20",
+    "end": "2023-04-30",
+    "assigned": "mike.r@gmail.com",
+    "status": "Completed"
+  },
+  {
+    "id": 7,
+    "name": "Nova: Inventory System",
+    "desc": "Excepteur sint occaecat...",
+    "customer": "Retail Hub",
+    "start": "2023-06-05",
+    "end": "2023-07-25",
+    "assigned": "retail.hub@gmail.com",
+    "status": "In Progress"
+  },
+  {
+    "id": 8,
+    "name": "Pulse: Fitness App",
+    "desc": "Sed ut perspiciatis...",
+    "customer": "FitLife",
+    "start": "2023-02-10",
+    "end": "2023-03-18",
+    "assigned": "coach@fitlife.com",
+    "status": "Completed"
+  },
+  {
+    "id": 9,
+    "name": "Beacon: Learning Platform",
+    "desc": "At vero eos et accusamus...",
+    "customer": "EduTech",
+    "start": "2023-08-01",
+    "end": "2023-09-30",
+    "assigned": "admin@edutech.com",
+    "status": "Not Started"
+  },
+  {
+    "id": 10,
+    "name": "Zenith: Finance Tracker",
+    "desc": "Nemo enim ipsam voluptatem...",
+    "customer": "Finance Pro",
+    "start": "2023-01-05",
+    "end": "2023-02-20",
+    "assigned": "finance.pro@gmail.com",
+    "status": "Completed"
+  },
+  {
+    "id": 11,
+    "name": "Atlas: Logistics System",
+    "desc": "Neque porro quisquam est...",
+    "customer": "LogiMax",
+    "start": "2023-04-15",
+    "end": "2023-06-01",
+    "assigned": "support@logimax.com",
+    "status": "In Progress"
+  },
+  {
+    "id": 12,
+    "name": "Echo: Chat Application",
+    "desc": "Ut enim ad minima veniam...",
+    "customer": "SocialNet",
+    "start": "2023-03-01",
+    "end": "2023-04-12",
+    "assigned": "dev@socialnet.com",
+    "status": "Completed"
+  },
+  {
+    "id": 13,
+    "name": "Horizon: Travel Booking",
+    "desc": "Quis autem vel eum iure...",
+    "customer": "TravelGo",
+    "start": "2023-09-01",
+    "end": "2023-10-15",
+    "assigned": "travel@go.com",
+    "status": "Not Started"
+  },
+  {
+    "id": 14,
+    "name": "Lumen: Portfolio Builder",
+    "desc": "Nam libero tempore...",
+    "customer": "Creative Studio",
+    "start": "2023-05-05",
+    "end": "2023-06-10",
+    "assigned": "studio@creative.com",
+    "status": "On Hold"
+  },
+  {
+    "id": 15,
+    "name": "Forge: DevOps Tool",
+    "desc": "Temporibus autem quibusdam...",
+    "customer": "CloudOps",
+    "start": "2023-02-20",
+    "end": "2023-04-01",
+    "assigned": "ops@cloud.com",
+    "status": "Completed"
+  },
+  {
+    "id": 16,
+    "name": "Prism: Design System",
+    "desc": "Itaque earum rerum hic...",
+    "customer": "UI Labs",
+    "start": "2023-06-18",
+    "end": "2023-07-30",
+    "assigned": "design@uilabs.com",
+    "status": "In Progress"
+  },
+  {
+    "id": 17,
+    "name": "Summit: Project Manager",
+    "desc": "Et harum quidem rerum...",
+    "customer": "TaskFlow",
+    "start": "2023-01-25",
+    "end": "2023-03-05",
+    "assigned": "pm@taskflow.com",
+    "status": "Completed"
+  },
+  {
+    "id": 18,
+    "name": "Wave: Music Streaming",
+    "desc": "Facilis est et expedita...",
+    "customer": "SoundWave",
+    "start": "2023-07-10",
+    "end": "2023-09-01",
+    "assigned": "music@soundwave.com",
+    "status": "In Progress"
+  },
+  {
+    "id": 19,
+    "name": "Core: Banking App",
+    "desc": "Distinctio nam libero...",
+    "customer": "Secure Bank",
+    "start": "2023-03-12",
+    "end": "2023-05-22",
+    "assigned": "it@securebank.com",
+    "status": "On Hold"
+  },
+  {
+    "id": 20,
+    "name": "Vertex: AI Assistant",
+    "desc": "Non recusandae itaque...",
+    "customer": "AI Labs",
+    "start": "2023-08-15",
+    "end": "2023-10-30",
+    "assigned": "research@ailabs.com",
+    "status": "Not Started"
+  }
+]

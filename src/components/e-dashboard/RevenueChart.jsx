@@ -27,7 +27,7 @@ const revenueData = [
 const RevenueChart = () => {
   return (
     <div className="w-full h-80 bg-white pb-20 pt-5 md:pb-12 px-1.5 md:px-6 rounded-md shadow-sm border border-gray-100 focus:outline-none">
-      <h2 className="text-2xl font-semibold mb-4 text-gray-700">
+      <h2 className="text-xl font-bold mb-4 text-gray-700">
         Monthly Revenue (Last 12 Months)
       </h2>
       <ResponsiveContainer width="100%" height="100%">

@@ -7,7 +7,7 @@ const RegionalAnalytics = () => {
   const [hoveredId, setHoveredId] = useState(null);
 
   return (
-    <div className="w-full max-w-[500px] mx-auto bg-white p-4 rounded-lg shadow-sm border border-gray-100 ">
+    <div className="w-full max-h-[420px] max-w-[500px] mx-auto bg-white p-4 pr-0 rounded-lg shadow-sm border border-gray-100 ">
       {/* Header Section */}
       <div className="mb-4 text-center px-2">
         <h3 className="text-lg md:text-xl font-bold text-gray-800">
@@ -19,9 +19,9 @@ const RegionalAnalytics = () => {
       </div>
 
       {/* ম্যাপ কন্টেইনার - ফিক্সড ৬০০ পিক্সেল */}
-      <div className="relative w-full h-[350px] bg-slate-50 rounded-2xl overflow-hidden border border-slate-200 touch-none">
+      <div className="relative w-full h-[310px] bg-slate-50 rounded-2xl overflow-hidden border border-slate-200 touch-none">
         <svg
-          viewBox="0 20 800 1000"
+          viewBox="-100 50 1000 1100"
           className="w-full h-full"
           xmlns="http://www.w3.org/2000/svg"
           preserveAspectRatio="xMidYMid meet"
